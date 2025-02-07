@@ -26,6 +26,7 @@
             height: auto;
             display: none; /* Hide initially */
             cursor: pointer;
+            pointer-events: none; /* Allows clicks to pass through */
         }
     </style>
 </head>
@@ -41,26 +42,33 @@
         const counter = document.getElementById("counter");
         const sound = document.getElementById("clickSound");
 
-        document.body.addEventListener("click", (event) => {
-            count++;
-            counter.textContent = count;
+        // Ensure the image is fully loaded before getting dimensions
+        plushie.onload = () => {
+            document.body.addEventListener("click", (event) => {
+                count++;
+                counter.textContent = count;
 
-            // Get random position within viewport
-            const maxX = window.innerWidth - plushie.width;
-            const maxY = window.innerHeight - plushie.height;
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
+                // Get random position within the viewport
+                const maxX = window.innerWidth - plushie.width;
+                const maxY = window.innerHeight - plushie.height;
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
 
-            // Move image to random position
-            plushie.style.left = `${randomX}px`;
-            plushie.style.top = `${randomY}px`;
-            plushie.style.display = "block"; // Ensure it shows
+                // Move image to new position
+                plushie.style.left = `${randomX}px`;
+                plushie.style.top = `${randomY}px`;
+                plushie.style.display = "block"; // Ensure it shows
 
-            // Play sound
-            sound.currentTime = 0;
-            sound.play();
-        });
+                // Play sound
+                sound.currentTime = 0;
+                sound.play();
+            });
+        };
 
+        // If the image is already loaded (cached), trigger the function manually
+        if (plushie.complete) {
+            plushie.onload();
+        }
     </script>
 </body>
 </html>
