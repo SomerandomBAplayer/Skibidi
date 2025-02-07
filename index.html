@@ -12,6 +12,7 @@
             margin: 0;
             height: 100vh;
             background-color: #f0f0f0;
+            position: relative;
         }
         h1 {
             margin: 10px;
@@ -23,7 +24,7 @@
             position: absolute;
             width: 100px; /* Adjust size if needed */
             height: auto;
-            display: none;
+            display: none; /* Hide initially */
             cursor: pointer;
         }
     </style>
@@ -40,18 +41,17 @@
         const counter = document.getElementById("counter");
         const sound = document.getElementById("clickSound");
 
-        // When the user clicks anywhere, move the image to a random spot
-        document.addEventListener("click", (event) => {
+        document.body.addEventListener("click", (event) => {
             count++;
             counter.textContent = count;
 
-            // Get random position within the viewport
+            // Get random position within viewport
             const maxX = window.innerWidth - plushie.width;
             const maxY = window.innerHeight - plushie.height;
             const randomX = Math.random() * maxX;
             const randomY = Math.random() * maxY;
 
-            // Move image to new position
+            // Move image to random position
             plushie.style.left = `${randomX}px`;
             plushie.style.top = `${randomY}px`;
             plushie.style.display = "block"; // Ensure it shows
@@ -60,6 +60,7 @@
             sound.currentTime = 0;
             sound.play();
         });
+
     </script>
 </body>
 </html>
