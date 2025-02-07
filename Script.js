@@ -1,29 +1,28 @@
 // Get elements
-const plushie = document.getElementById("plushie");
 const counter = document.getElementById("counter");
-const sound = new Audio("Shiroko_Battle_Damage_2.ogg");
+const soundSrc = "Shiroko_Battle_Damage_2.ogg"; // Path to the sound file
 let count = 0;
 
-// Function to move the plushie to a random position
-function movePlushie(event) {
+// Function to create a plushie at the cursor's position
+function createPlushie(event) {
     count++;
     counter.textContent = count;
 
-    // Get random position within viewport
-    const maxX = window.innerWidth - plushie.width;
-    const maxY = window.innerHeight - plushie.height;
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    // Create a new plushie element
+    const plushie = document.createElement("img");
+    plushie.src = "Plushie.PNG"; // Path to the image file
+    plushie.classList.add("plushie");
+    plushie.style.position = "absolute";
+    plushie.style.width = "100px"; // Adjust size if needed
+    plushie.style.height = "auto";
+    plushie.style.left = `${event.pageX - 50}px`; // Center the image
+    plushie.style.top = `${event.pageY - 50}px`;
+    document.body.appendChild(plushie);
 
-    // Move plushie to random position and show it
-    plushie.style.left = `${randomX}px`;
-    plushie.style.top = `${randomY}px`;
-    plushie.style.display = "block"; 
-
-    // Play sound
-    sound.currentTime = 0;
+    // Play the sound without delay
+    const sound = new Audio(soundSrc);
     sound.play().catch(error => console.log("Audio playback failed:", error));
 }
 
 // Add click event to the entire page
-document.body.addEventListener("click", movePlushie);
+document.body.addEventListener("click", createPlushie);
