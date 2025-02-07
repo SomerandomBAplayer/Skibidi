@@ -8,13 +8,23 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-        }
-        img {
-            width: 200px;
-            cursor: pointer;
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            background-color: #f0f0f0;
         }
         h1 {
-            margin-bottom: 10px;
+            margin: 10px;
+        }
+        p {
+            font-size: 18px;
+        }
+        #plushie {
+            position: absolute;
+            width: 100px; /* Adjust size if needed */
+            height: auto;
+            display: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -30,12 +40,28 @@
         const counter = document.getElementById("counter");
         const sound = document.getElementById("clickSound");
 
-        plushie.addEventListener("click", () => {
-            count++;
-            counter.textContent = count;
-            sound.currentTime = 0; // Reset sound for repeated clicks
-            sound.play();
-        });
+        // Ensure the image is loaded before getting dimensions
+        plushie.onload = () => {
+            document.body.addEventListener("click", (event) => {
+                count++;
+                counter.textContent = count;
+
+                // Get random position within viewport
+                const maxX = window.innerWidth - plushie.width;
+                const maxY = window.innerHeight - plushie.height;
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                // Move image and show it
+                plushie.style.left = `${randomX}px`;
+                plushie.style.top = `${randomY}px`;
+                plushie.style.display = "block";
+
+                // Play sound
+                sound.currentTime = 0;
+                sound.play();
+            });
+        };
     </script>
 </body>
 </html>
