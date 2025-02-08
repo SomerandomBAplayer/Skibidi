@@ -1,6 +1,6 @@
 // Get elements
 const counter = document.getElementById("counter");
-const soundSrc = "Shiroko_Battle_Damage_2.ogg"; // Path to the sound file
+const soundSrc = "./Shiroko_Battle_Damage_2.ogg"; // Use "./" to refer to same folder
 let count = 0;
 
 // Function to create a plushie at the cursor's position
@@ -10,7 +10,7 @@ function createPlushie(event) {
 
     // Create a new plushie element
     const plushie = document.createElement("img");
-    plushie.src = "Plushie.PNG"; // Path to the image file
+    plushie.src = "./Plushie.PNG"; // Ensure correct file path
     plushie.classList.add("plushie");
     plushie.style.position = "absolute";
     plushie.style.width = "100px"; // Adjust size if needed
