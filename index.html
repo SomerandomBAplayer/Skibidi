@@ -1,28 +1,37 @@
-// Get elements
-const counter = document.getElementById("counter");
-const soundSrc = "Shiroko_Battle_Damage_2.ogg"; // Path to the sound file
-let count = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plushie Clicker Game</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        h1 {
+            margin: 10px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .plushie {
+            position: absolute;
+            width: 100px; /* Adjust as needed */
+            height: auto;
+            pointer-events: none; /* Prevent blocking clicks */
+        }
+    </style>
+</head>
+<body>
+    <h1>Plushie Clicker Game</h1>
+    <p>Clicks: <span id="counter">0</span></p>
 
-// Function to create a plushie at the cursor's position
-function createPlushie(event) {
-    count++;
-    counter.textContent = count;
-
-    // Create a new plushie element
-    const plushie = document.createElement("img");
-    plushie.src = "Plushie.PNG"; // Path to the image file
-    plushie.classList.add("plushie");
-    plushie.style.position = "absolute";
-    plushie.style.width = "100px"; // Adjust size if needed
-    plushie.style.height = "auto";
-    plushie.style.left = `${event.pageX - 50}px`; // Center the image
-    plushie.style.top = `${event.pageY - 50}px`;
-    document.body.appendChild(plushie);
-
-    // Play the sound without delay
-    const sound = new Audio(soundSrc);
-    sound.play().catch(error => console.log("Audio playback failed:", error));
-}
-
-// Add click event to the entire page
-document.body.addEventListener("click", createPlushie);
+    <script src="script.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>
