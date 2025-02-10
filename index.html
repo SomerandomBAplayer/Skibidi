@@ -3,36 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plushie Clicker Game</title>
+    <title>Clicker Game</title>
     <style>
         body {
+            background-color: #f0f0f0;
             text-align: center;
             font-family: Arial, sans-serif;
-            overflow: hidden;
             margin: 0;
-            height: 100vh;
-            background-color: #f0f0f0;
-            position: relative;
-            cursor: pointer;
+            overflow: hidden;
         }
-        h1 {
-            margin: 10px;
-        }
-        p {
-            font-size: 18px;
-        }
-        .plushie {
+        #counter {
             position: absolute;
-            width: 100px;
-            height: auto;
-            pointer-events: none;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Plushie Clicker Game</h1>
-    <p>Clicks: <span id="counter">0</span></p>
+    <div id="counter">0</div>
 
-    <script src="script.js"></script> <!-- Correctly linking to script.js -->
+    <script src="script.js"></script> <!-- Make sure this file exists in your GitHub repository -->
 </body>
 </html>
