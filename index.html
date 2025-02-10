@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plushie Clicker Game</title> <!-- ✅ This sets the browser tab title -->
+    <title>Plushie Clicker Game</title>
     <style>
         body {
             background-color: #f0f0f0;
@@ -18,18 +18,16 @@
             font-weight: bold;
         }
         #counter {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-top: 10px; /* Moves counter down */
             font-size: 24px;
             font-weight: bold;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <h1>Plushie Clicker Game</h1> <!-- ✅ This adds the visible title on the page -->
-    <div id="counter">0</div>
+    <h1>Plushie Clicker Game</h1>
+    <div id="counter">0</div> <!-- ✅ Now properly spaced below the title -->
 
     <script src="script.js"></script>
 </body>
