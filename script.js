@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let count = 0;
 
     document.body.addEventListener("click", (event) => {
-        // Only spawn a new image if clicking on the background (not an existing plushie) nihahahahahah
+        // Only spawn a new image if clicking on the background (not an existing plushie)
         if (!event.target.closest("img")) {
             count++;
             counter.textContent = count;
