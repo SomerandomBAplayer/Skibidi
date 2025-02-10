@@ -10,13 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Create plushie image at the clicked position
             const plushie = document.createElement("img");
-            plushie.src = "Plushie.PNG"; // Correct path
+            plushie.src = "Plushie.PNG"; // Make sure the file name is correct
             plushie.classList.add("plushie");
+
+            // Generate a random size factor (1 to 9)
+            const randomSize = Math.floor(Math.random() * 9) + 1; // Generates a number from 1 to 9
+            const baseSize = 50; // Base size for the plushie
+            const plushieSize = baseSize * randomSize; // Scale the plushie
+
+            // Apply styles
             plushie.style.position = "absolute";
-            plushie.style.width = "100px";
-            plushie.style.height = "auto";
-            plushie.style.left = `${event.pageX - 50}px`; // Center the image
-            plushie.style.top = `${event.pageY - 50}px`;
+            plushie.style.width = `${plushieSize}px`; // Randomized width
+            plushie.style.height = "auto"; // Maintain aspect ratio
+            plushie.style.left = `${event.pageX - plushieSize / 2}px`; // Centering
+            plushie.style.top = `${event.pageY - plushieSize / 2}px`;
+
             document.body.appendChild(plushie);
 
             // Play sound without delay
