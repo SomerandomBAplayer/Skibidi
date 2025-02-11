@@ -3,24 +3,32 @@ document.addEventListener("DOMContentLoaded", () => {
     let count = 0;
 
     document.body.addEventListener("click", (event) => {
-        // Only spawn a new image if clicking on the background (not an existing plushie)
+        // Prevent clicking on existing images
         if (!event.target.closest("img")) {
             count++;
             counter.textContent = count;
 
-            // Create plushie image at the clicked position
+            // Create a new plushie image
             const plushie = document.createElement("img");
-            plushie.src = "Plushie.PNG"; // Correct path
+            plushie.src = "Plushie.PNG"; // Ensure the correct file name
             plushie.classList.add("plushie");
+
+            // Generate a random size factor (1 to 9)
+            const randomSize = Math.floor(Math.random() * 9) + 1;
+            const baseSize = 50;
+            const plushieSize = baseSize * randomSize;
+
+            // Set position relative to viewport
             plushie.style.position = "absolute";
-            plushie.style.width = "100px";
-            plushie.style.height = "auto";
-            plushie.style.left = `${event.pageX - 50}px`; // Center the image
-            plushie.style.top = `${event.pageY - 50}px`;
+            plushie.style.width = `${plushieSize}px`;
+            plushie.style.height = "auto"; // Maintain aspect ratio
+            plushie.style.left = `${event.clientX - plushieSize / 2}px`; // Center horizontally
+            plushie.style.top = `${event.clientY - plushieSize / 2}px`; // Center vertically
+
             document.body.appendChild(plushie);
 
-            // Play sound without delay
-            const sound = new Audio("Shiroko_Battle_Damage_2.ogg"); // Correct path
+            // Play sound instantly
+            const sound = new Audio("Shiroko_Battle_Damage_2.ogg");
             sound.play().catch(error => console.log("Audio playback failed:", error));
         }
     });
