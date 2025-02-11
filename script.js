@@ -3,24 +3,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let count = 0;
 
     document.body.addEventListener("click", (event) => {
-        // Prevent clicking on existing images
+        // Prevent clicking on existing plushies
         if (!event.target.closest("img")) {
             count++;
             counter.textContent = count;
 
             // Create a new plushie image
             const plushie = document.createElement("img");
-            plushie.src = "Plushie.PNG"; // Ensure the correct file name
+            plushie.src = "Plushie.PNG"; // Make sure the file is correct
             plushie.classList.add("plushie");
 
-            // Generate a random size factor (1 to 9)
-            const randomSize = Math.floor(Math.random() * 9) + 1;
-            const baseSize = 50;
-            const plushieSize = baseSize * randomSize;
+            // Generate a random size factor (0.5x to 3x)
+            const randomSize = Math.random() * (3 - 0.5) + 0.5; // Range: 0.5 to 3
+            const baseSize = 100; // Default size (adjust as needed)
+            const plushieSize = baseSize * randomSize; // Scale plushie
 
-            // Set position relative to viewport
+            // Set position and size
             plushie.style.position = "absolute";
-            plushie.style.width = `${plushieSize}px`;
+            plushie.style.width = `${plushieSize}px`; // Randomized width
             plushie.style.height = "auto"; // Maintain aspect ratio
             plushie.style.left = `${event.clientX - plushieSize / 2}px`; // Center horizontally
             plushie.style.top = `${event.clientY - plushieSize / 2}px`; // Center vertically
@@ -33,3 +33,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
